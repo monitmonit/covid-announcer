@@ -25,7 +25,7 @@ export const darkTheme = createTheme({
     },
   },
   typography: {
-    fontFamily: '"Roboto", "Noto Sans KR"',
+    fontFamily: '"Roboto", "Noto Sans KR", sans-serif',
   },
 });
 
