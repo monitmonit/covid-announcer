@@ -31,7 +31,7 @@ const Korea: React.VFC = () => {
         <AccumulatedCases data={total.data} />
         <Vaccine data={vaccine.data} />
       </Box>
-      <Box flexGrow="1">
+      <Box flexGrow="1" flexShrink="1">
         <History />
       </Box>
     </Box>

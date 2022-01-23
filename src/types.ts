@@ -75,10 +75,4 @@ interface Text {
   text: string;
 }
 
-enum LastDays {
-  Week = 8,
-  Month = 31,
-  Year = 366,
-}
-
-export type { TotalData, HistoricalData, VaccineData, LastDays, Items };
+export type { TotalData, HistoricalData, VaccineData, Items };

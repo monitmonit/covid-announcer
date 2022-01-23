@@ -2,6 +2,7 @@ import React from 'react';
 
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
+
 import styled from '@emotion/styled';
 
 import { LastDays } from './History';
@@ -30,11 +31,12 @@ const LastDaysButtons: React.VFC<LastDaysButtonsProps> = ({ lastDays, setLastDay
 };
 
 const MyButton = styled(Button)<{ lastDays: LastDays; unit: LastDays }>`
-  color: ${(props) => props.lastDays === props.unit && 'white'};
-  background-color: ${(props) => props.lastDays === props.unit && props.theme.palette.primary.main};
+  color: ${({ lastDays, unit }) => lastDays === unit && '#fff'};
+  background-color: ${({ lastDays, unit, theme }) =>
+    lastDays === unit && theme.palette.primary.main};
   &:hover {
-    background-color: ${(props) =>
-      props.lastDays === props.unit && props.theme.palette.primary.main};
+    background-color: ${({ lastDays, unit, theme }) =>
+      lastDays === unit && theme.palette.primary.main};
   }
 `;
 export default LastDaysButtons;
