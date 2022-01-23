@@ -1,7 +1,6 @@
 import React from 'react';
 
 import Box from '@mui/material/Box';
-import BaseLayout from '../components/layout/BaseLayout';
 import AccumulatedCases from '../components/korea/AccumulatedCases';
 import History from '../components/korea/History';
 import TodayCases from '../components/korea/TodayCases';
@@ -26,18 +25,16 @@ const Korea: React.VFC = () => {
   if (isError) return <div>Error!</div>;
 
   return (
-    <BaseLayout>
-      <Box position="relative" display="flex" flexDirection="column" gap={2} height="100%">
-        <Box display="flex" gap={2}>
-          <TodayCases data={total.data} />
-          <AccumulatedCases data={total.data} />
-          <Vaccine data={vaccine.data} />
-        </Box>
-        <Box flexGrow="1">
-          <History />
-        </Box>
+    <Box position="relative" display="flex" flexDirection="column" gap={2} height="100%">
+      <Box display="flex" gap={2}>
+        <TodayCases data={total.data} />
+        <AccumulatedCases data={total.data} />
+        <Vaccine data={vaccine.data} />
       </Box>
-    </BaseLayout>
+      <Box flexGrow="1">
+        <History />
+      </Box>
+    </Box>
   );
 };
 

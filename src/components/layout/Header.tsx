@@ -15,7 +15,7 @@ const Header: React.VFC = () => {
 
   return (
     <Box width="100%">
-      <AppBar position="static" color="transparent">
+      <AppBar position="static" color="transparent" elevation={0}>
         <Toolbar sx={{ justifyContent: 'space-between' }}>
           <HomeMenu />
           {mapcountries(countries)}

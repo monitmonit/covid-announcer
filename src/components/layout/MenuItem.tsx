@@ -9,7 +9,9 @@ interface HeaderItemProps {
 const HeaderItem: React.VFC<HeaderItemProps> = ({ country }) => {
   return (
     <Link href={`/${country}`}>
-      <Typography variant="h6">{country.toUpperCase()}</Typography>
+      <a>
+        <Typography variant="h6">{country.toUpperCase()}</Typography>
+      </a>
     </Link>
   );
 };
