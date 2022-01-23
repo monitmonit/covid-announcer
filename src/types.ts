@@ -75,4 +75,10 @@ interface Text {
   text: string;
 }
 
-export type { TotalData, HistoricalData, VaccineData, Items };
+enum LastDays {
+  Week = 8,
+  Month = 31,
+  Year = 366,
+}
+
+export type { TotalData, HistoricalData, VaccineData, LastDays, Items };

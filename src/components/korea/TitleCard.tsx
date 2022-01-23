@@ -1,7 +1,7 @@
 import React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 interface TitleCardProps {
   title: string;

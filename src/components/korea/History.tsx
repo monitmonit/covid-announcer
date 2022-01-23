@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import TitleCard from './TitleCard';
-import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
+import LastDaysButtons from './LastDaysButtons';
 
 import { useQuery } from 'react-query';
 import fetchHistoryDataByCountry from '../../api/fetchHistoryDataByCountry';
@@ -19,7 +18,7 @@ import { Bar } from 'react-chartjs-2';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-enum LastDays {
+export enum LastDays {
   Week = 8,
   Month = 31,
   Year = 366,
@@ -28,8 +27,12 @@ enum LastDays {
 const History: React.VFC = () => {
   const [lastDays, setLastDays] = useState(LastDays.Month);
 
-  const { data: rawData } = useQuery(['history', lastDays], () =>
-    fetchHistoryDataByCountry({ country: 'KR', lastDays }),
+  const { data: rawData } = useQuery(
+    ['history', lastDays],
+    () => fetchHistoryDataByCountry({ country: 'KR', lastDays }),
+    {
+      cacheTime: 600000,
+    },
   );
 
   const labels = [];
@@ -70,11 +73,7 @@ const History: React.VFC = () => {
 
   return (
     <TitleCard title="변화추이" height="90%">
-      <Box position="absolute" top="8px" right="8px">
-        <Button onClick={() => setLastDays(LastDays.Year)}>년</Button>
-        <Button onClick={() => setLastDays(LastDays.Month)}>월</Button>
-        <Button onClick={() => setLastDays(LastDays.Week)}>주</Button>
-      </Box>
+      <LastDaysButtons lastDays={lastDays} setLastDays={setLastDays} />
       <Bar data={chartData} options={options} />
     </TitleCard>
   );

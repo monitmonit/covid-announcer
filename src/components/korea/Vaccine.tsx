@@ -9,13 +9,13 @@ interface VaccineProps {
 }
 
 const Vaccine: React.VFC<VaccineProps> = ({ data }) => {
-  const totalVaccineData = data.item[1];
+  const { firstCnt, secondCnt, thirdCnt } = data.item[1];
   return (
     <TitleCard title="백신 접종 현황">
       <Box display="flex" flexDirection="column" gap={1}>
-        <Typography>1차 접종: {totalVaccineData.firstCnt.text}</Typography>
-        <Typography>2차 접종: {totalVaccineData.secondCnt.text}</Typography>
-        <Typography>3차 접종: {totalVaccineData.thirdCnt.text}</Typography>
+        <Typography>1차 접종: {parseInt(firstCnt.text).toLocaleString()}</Typography>
+        <Typography>2차 접종: {parseInt(secondCnt.text).toLocaleString()}</Typography>
+        <Typography>3차 접종: {parseInt(thirdCnt.text).toLocaleString()}</Typography>
       </Box>
     </TitleCard>
   );
