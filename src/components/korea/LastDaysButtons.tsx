@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTheme } from '@emotion/react';
 
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
@@ -13,10 +14,13 @@ interface LastDaysButtonsProps {
 }
 
 const LastDaysButtons: React.VFC<LastDaysButtonsProps> = ({ lastDays, setLastDays }) => {
+  const theme = useTheme();
   const { Year, Month, Week } = LastDays;
 
   return (
-    <Box position="absolute" top="12px" right="12px">
+    /*eslint-disable @typescript-eslint/no-unsafe-call*/
+    /*eslint-disable @typescript-eslint/no-unsafe-assignment*/
+    <Box position="absolute" top={theme.spacing(1.5)} right={theme.spacing(1.5)}>
       <MyButton size="small" lastDays={lastDays} unit={Year} onClick={() => setLastDays(Year)}>
         년
       </MyButton>

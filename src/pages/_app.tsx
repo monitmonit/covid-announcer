@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useMediaQuery } from '@mui/material';
 
 import { ThemeProvider } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
@@ -17,9 +18,12 @@ axios.defaults.baseURL = 'https://disease.sh/v3/covid-19';
 const MyApp: React.VFC<AppProps> = ({ Component, pageProps }) => {
   const queryClient = new QueryClient();
 
-  //true는 Light, false는 Dark mode를 의미합니다.
-  const [theme, setTheme] = useState(true);
+  const isDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+  useEffect(() => {
+    setDarkMode(isDarkMode);
+  }, [isDarkMode]);
 
+  const [darkMode, setDarkMode] = useState(isDarkMode);
   return (
     <React.Fragment>
       <Head>
@@ -38,8 +42,8 @@ const MyApp: React.VFC<AppProps> = ({ Component, pageProps }) => {
       </Head>
 
       <QueryClientProvider client={queryClient}>
-        <ThemeProvider theme={theme ? lightTheme : darkTheme}>
-          <BaseLayout setTheme={setTheme}>
+        <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
+          <BaseLayout darkMode={darkMode} setDarkMode={setDarkMode}>
             <CssBaseline />
             <Component {...pageProps} />
           </BaseLayout>

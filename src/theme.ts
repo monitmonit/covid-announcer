@@ -7,6 +7,9 @@ export const darkTheme = createTheme({
       main: '#2F74C0',
     },
   },
+  typography: {
+    fontFamily: '"Roboto", "Noto Sans KR", sans-serif',
+  },
   components: {
     MuiCssBaseline: {
       styleOverrides: {
@@ -23,9 +26,6 @@ export const darkTheme = createTheme({
         },
       },
     },
-  },
-  typography: {
-    fontFamily: '"Roboto", "Noto Sans KR", sans-serif',
   },
 });
 
@@ -68,5 +68,6 @@ declare module '@emotion/react' {
         main: string;
       };
     };
+    spacing: (arg: number) => unknown;
   }
 }
