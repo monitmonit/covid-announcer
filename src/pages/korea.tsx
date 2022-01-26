@@ -12,7 +12,7 @@ import fetchVaccineData from '../api/fetchVaccineData';
 
 const Korea: React.VFC = () => {
   const queryResults = useQueries([
-    { queryKey: 'total', queryFn: () => fetchTotalDataByCountry({ country: 'KR' }) },
+    { queryKey: 'total', queryFn: () => fetchTotalDataByCountry('KR') },
     { queryKey: 'vaccine', queryFn: fetchVaccineData },
   ]);
 
@@ -28,7 +28,7 @@ const Korea: React.VFC = () => {
     <Box position="relative" display="flex" flexDirection="column" gap={2} height="100%">
       <Box display="flex" gap={2}>
         <TodayCases data={total.data} />
-        <AccumulatedCases data={total.data} />
+        <AccumulatedCases data={total.data[0]} />
         <Vaccine data={vaccine.data} />
       </Box>
       <Box flexGrow="1" flexShrink="1">
