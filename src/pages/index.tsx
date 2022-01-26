@@ -1,11 +1,7 @@
-import BaseLayout from '../components/layout/BaseLayout';
+import React from 'react';
 
 const Home: React.VFC = () => {
-  return (
-    <BaseLayout>
-      <div>Hello World</div>
-    </BaseLayout>
-  );
+  return <div>Hello World</div>;
 };
 
 export default Home;

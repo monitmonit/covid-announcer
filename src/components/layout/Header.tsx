@@ -1,3 +1,4 @@
+import React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -13,8 +14,8 @@ const Header: React.VFC = () => {
   };
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" color="transparent">
+    <Box width="100%">
+      <AppBar position="static" color="transparent" elevation={0}>
         <Toolbar sx={{ justifyContent: 'space-between' }}>
           <HomeMenu />
           {mapcountries(countries)}

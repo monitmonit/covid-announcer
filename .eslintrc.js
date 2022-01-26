@@ -24,15 +24,21 @@ module.exports = {
   },
   plugins: ['react', 'react-hooks', '@typescript-eslint', 'prettier'],
   rules: {
-    indent: ['error', 2, { SwitchCase: 1 }],
     quotes: ['error', 'single', { avoidEscape: true }],
     semi: ['error', 'always'],
     'no-empty-function': 'off',
     '@typescript-eslint/no-empty-function': 'off',
+    '@typescript-eslint/restrict-template-expressions': 'off',
     'react/display-name': 'off',
     'react/prop-types': 'off',
     'prettier/prettier': 'error',
-    'no-used-vars': 2,
+    'prettier/prettier': [
+      'error',
+      {
+        endOfLine: 'auto',
+      },
+    ],
+    'no-console': 'error',
   },
   settings: {
     react: {
