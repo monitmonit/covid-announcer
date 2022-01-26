@@ -1,13 +1,13 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
 
-interface TodayDataComparedWithYesterdayProps {
+interface TodayComparedWithYesterdayProps {
   title: string;
   today: number;
   sub: number;
 }
 
-const TodayComparedWithYesterday: React.VFC<TodayDataComparedWithYesterdayProps> = ({
+const TodayComparedWithYesterday: React.VFC<TodayComparedWithYesterdayProps> = ({
   title,
   today,
   sub,
@@ -18,7 +18,7 @@ const TodayComparedWithYesterday: React.VFC<TodayDataComparedWithYesterdayProps>
         {title}: {today.toLocaleString()}
       </Typography>
       <Typography color={sub > 0 ? 'red' : 'dodgerBlue'}>
-        ({(sub > 0 ? `+${sub}` : sub).toLocaleString()})
+        ({Number(sub > 0 ? `+${sub}` : sub).toLocaleString()})
       </Typography>
     </Box>
   );
