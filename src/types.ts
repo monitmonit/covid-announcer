@@ -75,4 +75,6 @@ interface Text {
   text: string;
 }
 
-export type { TotalData, HistoricalData, VaccineData, Items };
+type Countries = 'korea' | 'usa' | 'india' | 'brazil' | 'france' | 'uk';
+
+export type { TotalData, HistoricalData, VaccineData, Items, Countries };

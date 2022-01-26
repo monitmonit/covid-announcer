@@ -7,7 +7,7 @@ interface TodayDataComparedWithYesterdayProps {
   sub: number;
 }
 
-const TodayDataComparedWithYesterday: React.VFC<TodayDataComparedWithYesterdayProps> = ({
+const TodayComparedWithYesterday: React.VFC<TodayDataComparedWithYesterdayProps> = ({
   title,
   today,
   sub,
@@ -24,4 +24,4 @@ const TodayDataComparedWithYesterday: React.VFC<TodayDataComparedWithYesterdayPr
   );
 };
 
-export default TodayDataComparedWithYesterday;
+export default TodayComparedWithYesterday;

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 import Box from '@mui/material/Box';
 import AccumulatedCases from '../components/korea/AccumulatedCases';
@@ -10,9 +11,20 @@ import { useQueries } from 'react-query';
 import fetchTotalDataByCountry from '../api/fetchTotalDataByCountry';
 import fetchVaccineData from '../api/fetchVaccineData';
 
+import { Countries } from '../types';
+
 const Korea: React.VFC = () => {
+  const [country, setCountry] = useState<Countries>('korea');
+
+  const router = useRouter();
+  const { country: countryParams } = router.query;
+
+  useEffect(() => {
+    setCountry(countryParams as Countries);
+  }, [countryParams]);
+
   const queryResults = useQueries([
-    { queryKey: 'total', queryFn: () => fetchTotalDataByCountry('KR') },
+    { queryKey: ['total', country], queryFn: () => fetchTotalDataByCountry(`${country}`) },
     { queryKey: 'vaccine', queryFn: fetchVaccineData },
   ]);
 
@@ -29,10 +41,10 @@ const Korea: React.VFC = () => {
       <Box display="flex" gap={2}>
         <TodayCases data={total.data} />
         <AccumulatedCases data={total.data[0]} />
-        <Vaccine data={vaccine.data} />
+        {country === 'korea' && <Vaccine data={vaccine.data} />}
       </Box>
       <Box flexGrow="1" flexShrink="1">
-        <History />
+        <History country={country} />
       </Box>
     </Box>
   );

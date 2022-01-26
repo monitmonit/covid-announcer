@@ -1,8 +1,8 @@
 import React from 'react';
-import TitleCard from './TitleCard';
-import { Box, Typography } from '@mui/material';
 
-import TodayDataComparedWithYesterday from './TodayDataComparedWithYesterday';
+import TitleCard from './TitleCard';
+import TodayComparedWithYesterday from './TodayComparedWithYesterday';
+import Box from '@mui/material/Box';
 
 import type { TotalData } from '../../types';
 
@@ -27,10 +27,10 @@ const TodayCases: React.VFC<TodayCasesProps> = ({ data }) => {
   return (
     <TitleCard title="일일 현황">
       <Box display="flex" flexDirection="column" gap={1}>
-        <TodayDataComparedWithYesterday title="확진" today={todayCases} sub={subCases} />
-        <TodayDataComparedWithYesterday title="위중증" today={todayCritical} sub={subCritical} />
-        <TodayDataComparedWithYesterday title="사망" today={todayDeaths} sub={subDeaths} />
-        <TodayDataComparedWithYesterday title="회복" today={todayRecovered} sub={subRecovered} />
+        <TodayComparedWithYesterday title="확진" today={todayCases} sub={subCases} />
+        <TodayComparedWithYesterday title="위중증" today={todayCritical} sub={subCritical} />
+        <TodayComparedWithYesterday title="사망" today={todayDeaths} sub={subDeaths} />
+        <TodayComparedWithYesterday title="회복" today={todayRecovered} sub={subRecovered} />
       </Box>
     </TitleCard>
   );

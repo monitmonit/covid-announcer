@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 import { useTheme } from '@mui/material';
 
 import TitleCard from './TitleCard';
@@ -20,8 +19,9 @@ import {
 import { Bar } from 'react-chartjs-2';
 
 import mapHistoricalData from '../../utils/mapHistoricalData';
+import mapCountryNameToCode from '../../utils/mapcountryNameToCode';
 
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
+import type { Countries } from '../../types';
 
 export enum LastDays {
   Week = 8,
@@ -29,12 +29,18 @@ export enum LastDays {
   Year = 366,
 }
 
-const History: React.VFC = () => {
+interface HistoryProps {
+  country: Countries;
+}
+
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
+
+const History: React.VFC<HistoryProps> = ({ country }) => {
   const [lastDays, setLastDays] = useState(LastDays.Month);
 
   const { data: rawData } = useQuery(
-    ['history', lastDays],
-    () => fetchHistoryDataByCountry({ country: 'KR', lastDays }),
+    ['history', country, lastDays],
+    () => fetchHistoryDataByCountry({ country: mapCountryNameToCode(country), lastDays }),
     {
       cacheTime: 600000,
     },

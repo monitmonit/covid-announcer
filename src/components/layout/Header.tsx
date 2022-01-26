@@ -1,12 +1,12 @@
 import React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
 
 import HomeMenu from './HomeMenu';
 import MenuItem from './MenuItem';
 
-const countries = ['korea', 'japan', 'china', 'mongolia', 'taiwan'];
+//TODO Countires 타입의 요소만 올 수 있도록 바꾸기
+const countries = ['KOREA', 'USA', 'INDIA', 'BRAZIL', 'FRANCE', 'UK'];
 
 const Header: React.VFC = () => {
   const mapcountries = (countries: string[]) => {
@@ -16,10 +16,10 @@ const Header: React.VFC = () => {
   return (
     <Box width="100%">
       <AppBar position="static" color="transparent" elevation={0}>
-        <Toolbar sx={{ justifyContent: 'space-between' }}>
+        <Box display="flex" py={2} px={4} justifyContent="space-between">
           <HomeMenu />
           {mapcountries(countries)}
-        </Toolbar>
+        </Box>
       </AppBar>
     </Box>
   );

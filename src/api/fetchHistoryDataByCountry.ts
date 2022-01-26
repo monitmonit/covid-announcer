@@ -2,7 +2,7 @@ import axios from 'axios';
 import type { HistoricalData } from '../types';
 
 interface Queries {
-  country: string | number;
+  country: string;
   lastDays?: string | number;
 }
 
