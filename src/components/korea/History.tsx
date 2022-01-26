@@ -18,9 +18,7 @@ import {
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 
-import mapHistoricalData from '../../utils/mapHistoricalData';
-import mapCountryNameToCode from '../../utils/mapcountryNameToCode';
-
+import { mapHistoricalData, mapCountryNameToCode } from '../../utils';
 import type { Countries } from '../../types';
 
 export enum LastDays {
