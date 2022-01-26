@@ -69,7 +69,7 @@ const History: React.VFC<HistoryProps> = ({ country }) => {
   };
 
   return (
-    <TitleCard title="변화 추이" height="90%">
+    <TitleCard title="변화 추이" height="100%">
       <LastDaysButtons lastDays={lastDays} setLastDays={setLastDays} />
       <Bar data={chartData} options={options} />
     </TitleCard>
