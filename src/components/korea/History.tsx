@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+
+import { useTheme } from '@mui/material';
+
 import TitleCard from './TitleCard';
-import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
+import LastDaysButtons from './LastDaysButtons';
 
 import { useQuery } from 'react-query';
 import fetchHistoryDataByCountry from '../../api/fetchHistoryDataByCountry';
@@ -17,9 +19,11 @@ import {
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 
+import mapHistoricalData from '../../utils/mapHistoricalData';
+
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-enum LastDays {
+export enum LastDays {
   Week = 8,
   Month = 31,
   Year = 366,
@@ -28,25 +32,17 @@ enum LastDays {
 const History: React.VFC = () => {
   const [lastDays, setLastDays] = useState(LastDays.Month);
 
-  const { data: rawData } = useQuery(['history', lastDays], () =>
-    fetchHistoryDataByCountry({ country: 'KR', lastDays }),
+  const { data: rawData } = useQuery(
+    ['history', lastDays],
+    () => fetchHistoryDataByCountry({ country: 'KR', lastDays }),
+    {
+      cacheTime: 600000,
+    },
   );
 
-  const labels = [];
-  const data = [];
+  const [labels, data] = mapHistoricalData(rawData);
 
-  if (rawData) {
-    let lastValue = 0;
-    let index = 0;
-    for (const [key, value] of Object.entries(rawData.timeline.cases)) {
-      if (index > 0) {
-        labels.push(key);
-        data.push(value - lastValue);
-      }
-      lastValue = value;
-      index++;
-    }
-  }
+  const theme = useTheme();
 
   const chartData = {
     labels,
@@ -54,7 +50,7 @@ const History: React.VFC = () => {
       {
         label: '일일 확진자',
         data,
-        backgroundColor: '#3178C6',
+        backgroundColor: theme.palette.primary.main,
       },
     ],
   };
@@ -69,12 +65,8 @@ const History: React.VFC = () => {
   };
 
   return (
-    <TitleCard title="변화추이" height="90%">
-      <Box position="absolute" top="8px" right="8px">
-        <Button onClick={() => setLastDays(LastDays.Year)}>년</Button>
-        <Button onClick={() => setLastDays(LastDays.Month)}>월</Button>
-        <Button onClick={() => setLastDays(LastDays.Week)}>주</Button>
-      </Box>
+    <TitleCard title="변화 추이" height="90%">
+      <LastDaysButtons lastDays={lastDays} setLastDays={setLastDays} />
       <Bar data={chartData} options={options} />
     </TitleCard>
   );

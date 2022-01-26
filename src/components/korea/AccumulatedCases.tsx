@@ -14,9 +14,9 @@ const AccumulatedCases: React.VFC<AccumulatedCasesProps> = ({
   return (
     <TitleCard title="누적 현황">
       <Box display="flex" flexDirection="column" gap={1}>
-        <Typography>확진: {cases}</Typography>
-        <Typography>사망: {deaths}</Typography>
-        <Typography>완치: {recovered}</Typography>
+        <Typography>확진: {cases.toLocaleString()}</Typography>
+        <Typography>사망: {deaths.toLocaleString()}</Typography>
+        <Typography>완치: {recovered.toLocaleString()}</Typography>
       </Box>
     </TitleCard>
   );

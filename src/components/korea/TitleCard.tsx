@@ -1,7 +1,7 @@
 import React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 interface TitleCardProps {
   title: string;
@@ -29,9 +29,9 @@ const MyCard = styled(Box)`
   display: flex;
   flex-direction: column;
   flex-basis: 100%;
-  border: 1px solid #4d4d4d;
   border-radius: 13px;
-  background-color: #212427;
+  border: 1px solid ${(props) => (props.theme.palette.mode === 'dark' ? '#4D4D4D' : '#EBEBEB')};
+  background-color: ${(props) => (props.theme.palette.mode === 'dark' ? '#25282C' : '#fff')};
 `;
 
 export default TitleCard;
