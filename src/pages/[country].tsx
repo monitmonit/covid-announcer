@@ -13,7 +13,7 @@ import fetchVaccineData from '../api/fetchVaccineData';
 
 import { Countries } from '../types';
 
-const Korea: React.VFC = () => {
+const DashBoard: React.VFC = () => {
   const [country, setCountry] = useState<Countries>('korea');
 
   const router = useRouter();
@@ -50,4 +50,4 @@ const Korea: React.VFC = () => {
   );
 };
 
-export default Korea;
+export default DashBoard;
