@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 import { useTheme } from '@mui/material';
 
 import TitleCard from './TitleCard';
@@ -19,22 +18,21 @@ import {
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 
-import mapHistoricalData from '../../utils/mapHistoricalData';
+import { mapHistoricalData, mapCountryNameToCode } from '../../utils';
+import { Countries, LastDays } from '../../types';
+
+interface HistoryProps {
+  country: Countries;
+}
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-export enum LastDays {
-  Week = 8,
-  Month = 31,
-  Year = 366,
-}
-
-const History: React.VFC = () => {
+const History: React.VFC<HistoryProps> = ({ country }) => {
   const [lastDays, setLastDays] = useState(LastDays.Month);
 
   const { data: rawData } = useQuery(
-    ['history', lastDays],
-    () => fetchHistoryDataByCountry({ country: 'KR', lastDays }),
+    ['history', country, lastDays],
+    () => fetchHistoryDataByCountry({ country: mapCountryNameToCode(country), lastDays }),
     {
       cacheTime: 600000,
     },
@@ -65,7 +63,7 @@ const History: React.VFC = () => {
   };
 
   return (
-    <TitleCard title="변화 추이" height="90%">
+    <TitleCard title="변화 추이" height="100%">
       <LastDaysButtons lastDays={lastDays} setLastDays={setLastDays} />
       <Bar data={chartData} options={options} />
     </TitleCard>

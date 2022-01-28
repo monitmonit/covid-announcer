@@ -68,6 +68,7 @@ declare module '@emotion/react' {
         main: string;
       };
     };
-    spacing: (arg: number) => unknown;
+    // eslint-disable-next-line  @typescript-eslint/no-explicit-any
+    spacing: (arg: number) => any;
   }
 }

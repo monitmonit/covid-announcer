@@ -75,4 +75,12 @@ interface Text {
   text: string;
 }
 
-export type { TotalData, HistoricalData, VaccineData, Items };
+type Countries = 'korea' | 'usa' | 'india' | 'brazil' | 'france' | 'uk';
+
+export enum LastDays {
+  Week = 8,
+  Month = 31,
+  Year = 366,
+}
+
+export type { TotalData, HistoricalData, VaccineData, Items, Countries };
