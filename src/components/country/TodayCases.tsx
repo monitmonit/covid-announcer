@@ -19,18 +19,18 @@ const TodayCases: React.VFC<TodayCasesProps> = ({ data }) => {
     todayRecovered: yesterdayRecovered,
   } = data[1];
 
-  const subCases = todayCases - yesterdayCases;
-  const subCritical = todayCritical - yesterdayCritical;
-  const subDeaths = todayDeaths - yesterdayDeaths;
-  const subRecovered = todayRecovered - yesterdayRecovered;
+  const casesDiff = todayCases - yesterdayCases;
+  const criticalDiff = todayCritical - yesterdayCritical;
+  const deathsDiff = todayDeaths - yesterdayDeaths;
+  const recoveredDiff = todayRecovered - yesterdayRecovered;
 
   return (
     <TitleCard title="일일 현황">
       <Box display="flex" flexDirection="column" gap={1}>
-        <TodayComparedWithYesterday title="확진" today={todayCases} sub={subCases} />
-        <TodayComparedWithYesterday title="위중증" today={todayCritical} sub={subCritical} />
-        <TodayComparedWithYesterday title="사망" today={todayDeaths} sub={subDeaths} />
-        <TodayComparedWithYesterday title="회복" today={todayRecovered} sub={subRecovered} />
+        <TodayComparedWithYesterday title="확진" today={todayCases} diff={casesDiff} />
+        <TodayComparedWithYesterday title="위중증" today={todayCritical} diff={criticalDiff} />
+        <TodayComparedWithYesterday title="사망" today={todayDeaths} diff={deathsDiff} />
+        <TodayComparedWithYesterday title="회복" today={todayRecovered} diff={recoveredDiff} />
       </Box>
     </TitleCard>
   );

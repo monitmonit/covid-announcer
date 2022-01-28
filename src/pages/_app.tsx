@@ -9,7 +9,7 @@ import { AppProps } from 'next/dist/shared/lib/router/router';
 import Head from 'next/head';
 
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { ReactQueryDevtools } from 'react-query/devtools';
+// import { ReactQueryDevtools } from 'react-query/devtools';
 
 import axios from 'axios';
 import BaseLayout from '../components/layout/BaseLayout';
@@ -24,6 +24,7 @@ const MyApp: React.VFC<AppProps> = ({ Component, pageProps }) => {
   }, [isDarkMode]);
 
   const [darkMode, setDarkMode] = useState(isDarkMode);
+
   return (
     <React.Fragment>
       <Head>
@@ -48,7 +49,6 @@ const MyApp: React.VFC<AppProps> = ({ Component, pageProps }) => {
             <Component {...pageProps} />
           </BaseLayout>
         </ThemeProvider>
-        <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </React.Fragment>
   );

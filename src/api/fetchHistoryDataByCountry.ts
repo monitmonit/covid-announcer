@@ -3,12 +3,12 @@ import type { HistoricalData } from '../types';
 
 interface Queries {
   country: string;
-  lastDays?: string | number;
+  lastDays: number;
 }
 
 const fetchHistoryDataByCountry = async ({
   country,
-  lastDays = 'all',
+  lastDays,
 }: Queries): Promise<HistoricalData> => {
   const response = await axios.get<HistoricalData>(`historical/${country}?lastdays=${lastDays}`);
 

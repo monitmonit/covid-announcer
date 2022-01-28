@@ -5,8 +5,10 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useTheme } from '@emotion/react';
 
+import type { Countries } from '../../types';
+
 interface HeaderItemProps {
-  country: string;
+  country: Countries;
 }
 
 const HeaderItem: React.VFC<HeaderItemProps> = ({ country }) => {
@@ -15,13 +17,10 @@ const HeaderItem: React.VFC<HeaderItemProps> = ({ country }) => {
 
   const theme = useTheme();
   return (
-    <Link href={`/${country.toLowerCase()}`}>
+    <Link href={`/${country}`}>
       <a>
-        <Typography
-          variant="h6"
-          color={country.toLowerCase() === countryParams && theme.palette.primary.main}
-        >
-          {country}
+        <Typography variant="h6" color={country === countryParams && theme.palette.primary.main}>
+          {country.toUpperCase()}
         </Typography>
       </a>
     </Link>

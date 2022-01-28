@@ -23,7 +23,7 @@ export const mapHistoricalData = (rawData: HistoricalData): [string[], number[]]
     for (const [key, value] of Object.entries(rawData.timeline.cases)) {
       if (index > 0) {
         labels.push(key);
-        data.push(value - lastValue);
+        data.push(value - lastValue > 0 ? value - lastValue : 0);
       }
       lastValue = value;
       index++;

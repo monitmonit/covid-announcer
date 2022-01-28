@@ -19,13 +19,7 @@ import {
 import { Bar } from 'react-chartjs-2';
 
 import { mapHistoricalData, mapCountryNameToCode } from '../../utils';
-import type { Countries } from '../../types';
-
-export enum LastDays {
-  Week = 8,
-  Month = 31,
-  Year = 366,
-}
+import { Countries, LastDays } from '../../types';
 
 interface HistoryProps {
   country: Countries;

@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 
 import Box from '@mui/material/Box';
-import AccumulatedCases from '../components/korea/AccumulatedCases';
-import History from '../components/korea/History';
-import TodayCases from '../components/korea/TodayCases';
-import Vaccine from '../components/korea/Vaccine';
+import AccumulatedCases from '../components/country/AccumulatedCases';
+import History from '../components/country/History';
+import TodayCases from '../components/country/TodayCases';
+import Vaccine from '../components/country/Vaccine';
 
 import { useQueries } from 'react-query';
 import fetchTotalDataByCountry from '../api/fetchTotalDataByCountry';
