@@ -1,7 +1,12 @@
 import React from 'react';
+import { Typography } from '@mui/material';
 
-const Home: React.VFC = () => {
-  return <div>Hello World</div>;
+const index = () => {
+  return (
+    <Typography align="center" variant="h3">
+      Working In Progress... 🚧
+    </Typography>
+  );
 };
 
-export default Home;
+export default index;
