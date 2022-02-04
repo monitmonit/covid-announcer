@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 
-import Box from '@mui/material/Box';
+import { CircularProgress, Box } from '@mui/material';
 import AccumulatedCases from '../components/country/AccumulatedCases';
 import History from '../components/country/History';
 import TodayCases from '../components/country/TodayCases';
@@ -33,7 +33,7 @@ const DashBoard: React.VFC = () => {
   const isLoading = queryResults.some((query) => query.isLoading);
   const isError = queryResults.some((query) => query.isError);
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <CircularProgress />;
   if (isError) return <div>Error!</div>;
 
   return (
@@ -41,7 +41,9 @@ const DashBoard: React.VFC = () => {
       <Box display="flex" gap={2}>
         <TodayCases data={total.data} />
         <AccumulatedCases data={total.data[0]} />
-        {country === 'korea' && <Vaccine data={vaccine.data} />}
+        {country === 'korea' && (
+          <Vaccine data={{ ...vaccine.data, population: total.data[0].population }} />
+        )}
       </Box>
       <Box flexGrow="1" flexShrink="1">
         <History country={country} />
