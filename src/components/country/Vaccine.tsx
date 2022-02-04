@@ -1,21 +1,40 @@
 import React from 'react';
 import TitleCard from './TitleCard';
-import { Box, Typography } from '@mui/material';
+import VaccinePopulationWithRate from './VaccinePopulationWithRate';
+import Box from '@mui/material/Box';
 
 import type { Items } from '../../types';
 
+interface Data extends Items {
+  population: number;
+}
+
 interface VaccineProps {
-  data: Items;
+  data: Data;
 }
 
 const Vaccine: React.VFC<VaccineProps> = ({ data }) => {
-  const { firstCnt, secondCnt, thirdCnt } = data.item[1];
+  const { firstCnt, secondCnt, thirdCnt } = data.item[2];
+  const { population } = data;
+
   return (
     <TitleCard title="백신 접종 현황">
       <Box display="flex" flexDirection="column" gap={1}>
-        <Typography>1차 접종: {parseInt(firstCnt.text).toLocaleString()}</Typography>
-        <Typography>2차 접종: {parseInt(secondCnt.text).toLocaleString()}</Typography>
-        <Typography>3차 접종: {parseInt(thirdCnt.text).toLocaleString()}</Typography>
+        <VaccinePopulationWithRate
+          title="1차 접종"
+          vaccinatedPopulation={+firstCnt.text}
+          population={population}
+        />
+        <VaccinePopulationWithRate
+          title="2차 접종"
+          vaccinatedPopulation={+secondCnt.text}
+          population={population}
+        />
+        <VaccinePopulationWithRate
+          title="3차 접종"
+          vaccinatedPopulation={+thirdCnt.text}
+          population={population}
+        />
       </Box>
     </TitleCard>
   );
