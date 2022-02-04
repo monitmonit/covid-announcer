@@ -17,7 +17,7 @@ const TodayComparedWithYesterday: React.VFC<TodayComparedWithYesterdayProps> = (
       <Typography>
         {title}: {today.toLocaleString()}
       </Typography>
-      <Typography color={diff > 0 ? 'red' : 'dodgerBlue'}>({parseDiff(diff)})</Typography>
+      <Typography color={diff > 0 ? 'red' : 'green'}>({parseDiff(diff)})</Typography>
     </Box>
   );
 };
