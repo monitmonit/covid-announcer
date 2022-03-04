@@ -19,12 +19,12 @@ const index = () => {
         flexDirection="column"
         justifyContent="center"
         alignItems="center"
-        gap={3}
+        gap={2.5}
       >
         <Typography align="center" fontSize="4.5rem">
           World Covid Announcer
         </Typography>
-        <Typography fontSize="1.8rem">Check out the COVID-19 situation around the world</Typography>
+        <Typography fontSize="1.8rem">각국의 코로나 현황을 빠르게 확인하세요</Typography>
       </Box>
       <Box
         display="flex"
