@@ -1,4 +1,4 @@
-# covid-announcer
+# Covid Announcer
 
 코로나 현황을 알려주는 나만의 아나운서
 
