@@ -9,6 +9,6 @@
 
 ## 사용 화면
 
-![home](./image/home.png)
+![home](./image/home.gif)
 ![light-mode](./image/light-mode.png)
 ![dark-mode](./image/dark-mode.png)
