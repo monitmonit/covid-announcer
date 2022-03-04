@@ -14,20 +14,19 @@ export const mapCountryNameToCode = (country: Countries): string => {
 };
 
 export const mapHistoricalData = (rawData: HistoricalData): [string[], number[]] => {
-  const labels = [];
-  const data = [];
+  const labels: string[] = [];
+  const data: number[] = [];
 
   if (rawData) {
-    let lastValue = 0;
-    let index = 0;
-    for (const [key, value] of Object.entries(rawData.timeline.cases)) {
-      if (index > 0) {
-        labels.push(key);
-        data.push(value - lastValue > 0 ? value - lastValue : 0);
-      }
-      lastValue = value;
-      index++;
-    }
+    const entries = Object.entries(rawData.timeline.cases);
+    const initialValue = entries[0][1];
+    const dataset = entries.slice(1);
+
+    dataset.reduce((prev, crnt) => {
+      labels.push(crnt[0]);
+      data.push(crnt[1] - prev);
+      return crnt[1];
+    }, initialValue);
   }
 
   return [labels, data];

@@ -1,6 +1,5 @@
 import * as THREE from 'three';
 import Earth from './Earth';
-import Stars from './Stars';
 
 export default class Scene extends THREE.Scene {
   private camera;
