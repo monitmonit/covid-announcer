@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 
+import BaseLayout from '../components/layout/BaseLayout';
 import { CircularProgress, Box } from '@mui/material';
 import AccumulatedCases from '../components/country/AccumulatedCases';
 import History from '../components/country/History';

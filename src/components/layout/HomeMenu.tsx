@@ -9,7 +9,7 @@ const HomeMenu: React.VFC = () => {
   const themeColor = theme.palette.primary.main;
 
   return (
-    <Box sx={{ lineHeight: '0' }}>
+    <Box sx={{ lineHeight: '0', cursor: 'pointer' }}>
       <Link href="/">
         <svg
           width="36"

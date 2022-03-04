@@ -14,7 +14,7 @@ const Header: React.VFC = () => {
   };
 
   return (
-    <Box width="100%">
+    <Box width="100%" zIndex="1">
       <AppBar position="static" color="transparent" elevation={0}>
         <Box display="flex" py={2} px={4} justifyContent="space-between">
           <HomeMenu />

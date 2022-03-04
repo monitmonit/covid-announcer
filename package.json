@@ -17,6 +17,7 @@
     "react-chartjs-2": "^4.0.0",
     "react-dom": "^17.0.2",
     "react-query": "^3.34.8",
+    "three": "^0.138.3",
     "xml-js": "^1.6.11"
   },
   "scripts": {
@@ -32,6 +33,7 @@
   "devDependencies": {
     "@types/react": "^17.0.38",
     "@types/styled-components": "^5.1.20",
+    "@types/three": "^0.138.0",
     "@typescript-eslint/eslint-plugin": "^5.9.1",
     "@typescript-eslint/parser": "^5.9.1",
     "eslint": "^8.6.0",
